@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Predisksi Tarif Harga Transportasi Online</title>
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <link
+      rel="stylesheet"
+      href="../static/style.css"
+    />
+  </head>
+
+  <body>
+    <div class="container contact-form">
+      <div class="contact-image">
+        <img
+          src="../static/icons/car.png"
+          alt="rocket_contact"
+        />
+      </div>
+      <form action="{{url_for('predict')}}" method="post">
+        <h3 class="text-dark">Predisksi Tarif Harga Transportasi Online</h3>
+        <div class="row d-flex justify-content-center">
+          <div class="">
+            <div class="form-group">
+                <label for="transport_name">Transport Name</label>
+                <select class="form-control" id="transport_name" name="transport_name"
+                    required="required">
+                    <option>Choose a Transport Name</option>
+                    <option value="0">Lyft</option>
+                    <option value="1">Uber</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="kind">Service Type</label>
+			    <select class="form-control" id="kind" name="kind" required="required">
+			        <option>Choose a Service Type</option>
+				    <option value="0">Uber XL</option>
+				    <option value="1">Uber WAV</option>
+				    <option value="2">Uber Black SUV</option>
+				    <option value="3">Uber Black</option>
+				    <option value="4">Uber X</option>
+				    <option value="5">Uber Pool</option>
+				    <option value="6">Uber Lux</option>
+				    <option value="7">Lyft Taxi</option>
+				    <option value="8">Lyft Black XL</option>
+				    <option value="9">Lyft XL</option>
+				    <option value="10">Lyft Black</option>
+					<option value="11">Lyft Shared</option>
+				</select>
+            </div>
+			<div class="form-group">
+                <label for="distance">Distance</label>
+				<input type="number" name="distance" class="form-control" id="distance"
+					placeholder="Insert Distance Range (0 - 548)" min="0" max="548"
+					required="required">
+            </div>
+			<div class="form-group">
+                <label for="surge_multiplier">Surge Multiplier Pricing</label>
+				<select class="form-control" id="surge_multiplier" name="surge_multiplier"
+					required="required">
+					<option>Choose a Surge Multiplier Pricing</option>
+					<option value="0">$1.00</option>
+					<option value="1">$1.25</option>
+					<option value="2">$1.50</option>
+					<option value="3">$1.75</option>
+					<option value="4">$2.00</option>
+					<option value="5">$2.50</option>
+					<option value="6">$3.00</option>
+				</select>
+            </div>
+            <div class="form-group">
+                <label for="weather">Weather</label>
+				<select class="form-control" id="weather" name="weather" required="required">
+					<option>Choose a Weather Condition</option>
+					<option value="0">Overcast</option>
+					<option value="1">Mostly Cloudy</option>
+					<option value="2">Party Cloudy</option>
+					<option value="3">Clear</option>
+					<option value="4">Light Rain</option>
+					<option value="5">Rain</option>
+					<option value="6">Possible Drizzle</option>
+					<option value="7">Foggy</option>
+					<option value="8">Drizzle</option>
+				</select>
+			</div>
+			<div class="form-group">
+                <label for="visibility">Visibilty</label>
+				<input type="number" name="visibility" class="form-control" id="visibility"
+					placeholder="Insert Visibilitty Range (0 - 226)" min="0" max="226"
+					required="required">
+			</div>
+			<button type="submit" class="btn btn-danger btn-block btn-large">
+              Predict
+            </button>
+         	<div class="result">
+            	<p>
+				Prediksi Tarif Linear Regression denngan Tingkat Akurasi Sebesar 51% yaitu : <br />
+              	{{ prediction_text }}
+            	</p>
+          	</div>
+        	</div>
+           
+        </div>
+      </form>
+    </div>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </body>
+</html>
